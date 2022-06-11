@@ -1,0 +1,21 @@
+.TodoFilter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 6px;
+  height: 52px;
+  border-radius: 4px;
+  background: var(--very-darker-grayish-blue);
+}
+.TodoFilter-button {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  padding: 4px;
+  font-weight: var(--font-bold);
+  color: var(--dark-grayish-blue);
+}
+.TodoFilter-button:hover {
+  color: var(--light-grayish-blue);
+}
