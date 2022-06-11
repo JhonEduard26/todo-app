@@ -1,0 +1,35 @@
+.TodoItem-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 52px;
+  border-radius: 4px;
+  background: var(--very-darker-grayish-blue);
+  color: var(--light-grayish-blue);
+}
+.TodoItem-check {
+  cursor: pointer;
+  transition: 0.3s;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--dark-grayish-blue);
+}
+.TodoItem-checked {
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.TodoItem-text {
+  font-size: 0.875rem;
+}
+.TodoItem-text-completed {
+  text-decoration: line-through;
+  color: var(--dark-grayish-blue);
+}
+.TodoItem-close {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}

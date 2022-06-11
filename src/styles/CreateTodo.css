@@ -3,6 +3,7 @@
   align-items: center;
   column-gap: 12px;
   min-height: 44px;
+  margin-bottom: var(--mb-1-6);
   padding-left: 12px;
   border-radius: 4px;
   background-color: var(--very-darker-grayish-blue);
