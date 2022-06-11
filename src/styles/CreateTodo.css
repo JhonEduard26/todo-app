@@ -1,0 +1,28 @@
+.CreateTodo-container {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  min-height: 44px;
+  padding-left: 12px;
+  border-radius: 4px;
+  background-color: var(--very-darker-grayish-blue);
+}
+.CreateTodo-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--dark-grayish-blue);
+}
+.CreateTodo-check:hover {
+  /* margin: ; */
+}
+.CreateTodo-input {
+  width: 260px;
+  background-color: var(--very-darker-grayish-blue);
+  outline: 0;
+  border: 0;
+  color: var(--light-grayish-blue);
+}
+.CreateTodo-input::placeholder {
+  color: var(--dark-grayish-blue);
+}

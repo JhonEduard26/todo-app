@@ -1,0 +1,13 @@
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--mb-1-6);
+}
+.Header-title {
+  font-size: 1.25rem;
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  color: white;
+}

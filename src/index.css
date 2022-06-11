@@ -27,6 +27,12 @@
   --body-font: 'Josefin Sans', sans-serif;
   --font-medium: 400;
   --font-bold: 700;
+  /* Margins bottom*/
+  --mb-0-4: 0.25rem;
+  --mb-0-8: 0.5rem;
+  --mb-1-2: 0.75rem;
+  --mb-1-6: 1rem;
+  --mb-3-2: 2rem;
 }
 * {
   margin: 0;
