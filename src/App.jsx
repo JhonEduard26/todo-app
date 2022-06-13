@@ -134,13 +134,13 @@ function App() {
             />
           ))}
           <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
+          <TodoFilter
+            activeFun={onActiveFilter}
+            completedFun={onCompletedFilter}
+            allFun={onAllFilter}
+            all
+          />
         </TodoList>
-        <TodoFilter
-          activeFun={onActiveFilter}
-          completedFun={onCompletedFilter}
-          allFun={onAllFilter}
-          all
-        />
       </div>
     )
   }

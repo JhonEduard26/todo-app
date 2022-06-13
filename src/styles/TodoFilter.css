@@ -4,6 +4,7 @@
   align-items: center;
   column-gap: 6px;
   height: 52px;
+  margin-top: 18px;
   border-radius: 4px;
   background: var(--very-darker-grayish-blue);
 }
@@ -21,4 +22,13 @@
 }
 .TodoFilter-active {
   color: var(--bright-blue);
+}
+@media screen and (min-width: 768px) {
+  .TodoFilter {
+    position: absolute;
+    width: 100px;
+    left: 38%;
+    right: 0;
+    bottom: 0;
+  }
 }
