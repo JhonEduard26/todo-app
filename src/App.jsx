@@ -1,32 +1,25 @@
 import './App.css'
+import { useState } from 'react'
 import { Header } from './components/Header'
 import { CreateTodo } from './components/CreateTodo'
 import { TodoList } from './components/TodoList'
 import { TodoItem } from './components/TodoItem'
 import { TodoFilter } from './components/TodoFilter'
-import { useState } from 'react'
 import { TodoCounter } from './components/TodoCounter'
+import { useLocalStorage } from './hooks/useLocalStorage'
+
+import { v4 as uuidv4 } from 'uuid'
 
 const defaultTodos = [
   {
-    id: 1,
+    id: uuidv4(),
     text: 'Terminar la app',
-    completed: false,
-  },
-  {
-    id: 2,
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cumque sed laboriosam? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit modi quos nesciunt!',
-    completed: false,
-  },
-  {
-    id: 3,
-    text: 'Correr 3 kilometros',
     completed: false,
   },
 ]
 
 function App() {
-  const [todos, setTodos] = useState(defaultTodos)
+  const [todos, saveTodos] = useLocalStorage()
 
   const activeTodos = [...todos].filter((todo) => !todo.completed)
   const completedTodos = [...todos].filter((todo) => todo.completed)
@@ -34,16 +27,30 @@ function App() {
   const [active, setActive] = useState(false)
   const [completed, setCompleted] = useState(false)
 
+  const onCreate = (text) => {
+    if (!text.trim()) {
+      alert('Ingresa un texto para el Todo')
+    } else {
+      const newTodos = [...todos]
+      newTodos.push({
+        id: uuidv4(),
+        text,
+        completed: false,
+      })
+      saveTodos(newTodos)
+    }
+  }
+
   const onDelete = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id)
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   const onComplete = (id) => {
     const index = todos.findIndex((todo) => todo.id === id)
     const newTodos = [...todos]
     newTodos[index].completed = !newTodos[index].completed
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   const onAllFilter = () => {
@@ -63,14 +70,14 @@ function App() {
 
   const onClearCompleted = () => {
     const newTodos = todos.filter((todo) => !todo.completed)
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   if (active && !completed) {
     return (
       <div className='App'>
         <Header />
-        <CreateTodo />
+        <CreateTodo createTodoFun={onCreate} />
         <TodoList>
           {activeTodos.map((todo) => (
             <TodoItem
@@ -96,7 +103,7 @@ function App() {
     return (
       <div className='App'>
         <Header />
-        <CreateTodo />
+        <CreateTodo createTodoFun={onCreate} />
         <TodoList>
           {completedTodos.map((todo) => (
             <TodoItem
@@ -122,7 +129,7 @@ function App() {
     return (
       <div className='App'>
         <Header />
-        <CreateTodo />
+        <CreateTodo createTodoFun={onCreate} />
         <TodoList>
           {todos.map((todo) => (
             <TodoItem

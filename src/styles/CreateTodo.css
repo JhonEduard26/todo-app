@@ -9,13 +9,11 @@
   background-color: var(--very-darker-grayish-blue);
 }
 .CreateTodo-check {
+  cursor: pointer;
   width: 18px;
   height: 18px;
   border-radius: 50%;
   border: 1px solid var(--dark-grayish-blue);
-}
-.CreateTodo-check:hover {
-  /* margin: ; */
 }
 .CreateTodo-input {
   width: 260px;
