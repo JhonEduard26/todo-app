@@ -42,6 +42,7 @@
 }
 body {
   font-family: var(--body-font);
+  background-color: var(--very-dark-blue);
 }
 ul {
   list-style: none;

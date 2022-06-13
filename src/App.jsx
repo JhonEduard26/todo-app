@@ -5,6 +5,7 @@ import { TodoList } from './components/TodoList'
 import { TodoItem } from './components/TodoItem'
 import { TodoFilter } from './components/TodoFilter'
 import { useState } from 'react'
+import { TodoCounter } from './components/TodoCounter'
 
 const defaultTodos = [
   {
@@ -14,8 +15,8 @@ const defaultTodos = [
   },
   {
     id: 2,
-    text: 'Aprender React',
-    completed: true,
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt cumque sed laboriosam? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit modi quos nesciunt!',
+    completed: false,
   },
   {
     id: 3,
@@ -33,12 +34,12 @@ function App() {
   const [active, setActive] = useState(false)
   const [completed, setCompleted] = useState(false)
 
-  const handleDelete = (id) => {
+  const onDelete = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id)
     setTodos(newTodos)
   }
 
-  const handleComplete = (id) => {
+  const onComplete = (id) => {
     const index = todos.findIndex((todo) => todo.id === id)
     const newTodos = [...todos]
     newTodos[index].completed = !newTodos[index].completed
@@ -60,6 +61,11 @@ function App() {
     setCompleted(true)
   }
 
+  const onClearCompleted = () => {
+    const newTodos = todos.filter((todo) => !todo.completed)
+    setTodos(newTodos)
+  }
+
   if (active && !completed) {
     return (
       <div className='App'>
@@ -72,15 +78,17 @@ function App() {
               id={todo.id}
               text={todo.text}
               completed={todo.completed}
-              completeFun={handleComplete}
-              deleteFun={handleDelete}
+              completeFun={onComplete}
+              deleteFun={onDelete}
             />
           ))}
+          <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
         </TodoList>
         <TodoFilter
           activeFun={onActiveFilter}
           completedFun={onCompletedFilter}
           allFun={onAllFilter}
+          active
         />
       </div>
     )
@@ -96,12 +104,18 @@ function App() {
               id={todo.id}
               text={todo.text}
               completed={todo.completed}
-              completeFun={handleComplete}
-              deleteFun={handleDelete}
+              completeFun={onComplete}
+              deleteFun={onDelete}
             />
           ))}
+          <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
         </TodoList>
-        <TodoFilter activeFun={onActiveFilter} completedFun={onCompletedFilter} />
+        <TodoFilter
+          activeFun={onActiveFilter}
+          completedFun={onCompletedFilter}
+          allFun={onAllFilter}
+          complete
+        />
       </div>
     )
   } else {
@@ -116,12 +130,18 @@ function App() {
               id={todo.id}
               text={todo.text}
               completed={todo.completed}
-              completeFun={handleComplete}
-              deleteFun={handleDelete}
+              completeFun={onComplete}
+              deleteFun={onDelete}
             />
           ))}
+          <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
         </TodoList>
-        <TodoFilter activeFun={onActiveFilter} completedFun={onCompletedFilter} />
+        <TodoFilter
+          activeFun={onActiveFilter}
+          completedFun={onCompletedFilter}
+          allFun={onAllFilter}
+          all
+        />
       </div>
     )
   }

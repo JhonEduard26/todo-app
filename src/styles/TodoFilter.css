@@ -19,3 +19,6 @@
 .TodoFilter-button:hover {
   color: var(--light-grayish-blue);
 }
+.TodoFilter-active {
+  color: var(--bright-blue);
+}

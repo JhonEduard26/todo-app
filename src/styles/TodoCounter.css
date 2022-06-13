@@ -1,0 +1,24 @@
+.TodoCounter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 52px;
+  background: var(--very-darker-grayish-blue);
+  font-size: 0.75rem;
+  color: var(--dark-grayish-blue);
+}
+.TodoCounter-clear {
+  cursor: pointer;
+  background: transparent;
+  outline: 0;
+  border: 0;
+  font-family: var(--body-font);
+  font-size: 0.75rem;
+  text-transform: capitalize;
+  color: var(--dark-grayish-blue);
+}
+.TodoCounter-clear:hover {
+  color: var(--light-grayish-blue);
+}

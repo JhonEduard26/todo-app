@@ -1,8 +1,9 @@
 .App {
   width: 100%;
+  max-width: 375px;
   min-height: 100vh;
+  margin: 0 auto;
   padding: 24px 12px 0 12px;
-  background-color: var(--very-dark-blue);
   background-image: url(./assets/images/bg-mobile-dark.jpg);
   background-repeat: no-repeat;
 }

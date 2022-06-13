@@ -3,8 +3,7 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   column-gap: 12px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding: 4px 12px;
   min-height: 52px;
   border-bottom: 1px solid var(--very-dark-grayish-blue);
   background: var(--very-darker-grayish-blue);
@@ -38,5 +37,9 @@
   color: var(--dark-grayish-blue);
 }
 .TodoItem-close {
+  display: none;
   cursor: pointer;
+}
+.TodoItem-container:hover .TodoItem-close {
+  display: block;
 }
