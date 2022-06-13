@@ -10,14 +10,6 @@ import { useLocalStorage } from './hooks/useLocalStorage'
 
 import { v4 as uuidv4 } from 'uuid'
 
-const defaultTodos = [
-  {
-    id: uuidv4(),
-    text: 'Terminar la app',
-    completed: false,
-  },
-]
-
 function App() {
   const [todos, saveTodos] = useLocalStorage()
 
