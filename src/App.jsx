@@ -82,13 +82,13 @@ function App() {
             />
           ))}
           <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
+          <TodoFilter
+            activeFun={onActiveFilter}
+            completedFun={onCompletedFilter}
+            allFun={onAllFilter}
+            active
+          />
         </TodoList>
-        <TodoFilter
-          activeFun={onActiveFilter}
-          completedFun={onCompletedFilter}
-          allFun={onAllFilter}
-          active
-        />
       </div>
     )
   } else if (completed && !active) {
@@ -108,13 +108,13 @@ function App() {
             />
           ))}
           <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
+          <TodoFilter
+            activeFun={onActiveFilter}
+            completedFun={onCompletedFilter}
+            allFun={onAllFilter}
+            complete
+          />
         </TodoList>
-        <TodoFilter
-          activeFun={onActiveFilter}
-          completedFun={onCompletedFilter}
-          allFun={onAllFilter}
-          complete
-        />
       </div>
     )
   } else {
