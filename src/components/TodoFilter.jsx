@@ -1,8 +1,8 @@
 import '../styles/TodoFilter.css'
 
-function TodoFilter({ activeFun, completedFun, allFun, active, complete, all }) {
+function TodoFilter({ activeFun, completedFun, allFun, active, complete, all, theme }) {
   return (
-    <div className='TodoFilter'>
+    <div className={`TodoFilter ${theme && 'TodoFilter--dark'}`}>
       <button
         className={`TodoFilter-button ${all ? 'TodoFilter-active' : ''}`.trim()}
         type='button'

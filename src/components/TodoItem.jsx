@@ -2,10 +2,10 @@ import '../styles/TodoItem.css'
 import check from '../assets/icons/check.svg'
 import close from '../assets/icons/close.svg'
 
-function TodoItem({ id, text, completed, completeFun, deleteFun }) {
+function TodoItem({ id, text, completed, completeFun, deleteFun, theme }) {
   return (
     <li className='TodoItem'>
-      <div className='TodoItem-container'>
+      <div className={`TodoItem-container ${theme && 'TodoItem-container--dark'}`}>
         <div
           className={`TodoItem-check ${completed && 'TodoItem-checked'}`}
           onClick={() => completeFun(id)}

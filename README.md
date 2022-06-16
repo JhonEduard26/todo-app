@@ -6,7 +6,7 @@ The classic todo app with a few twists! This app includes a dark/light theme tog
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
+  - [Screenshots](#screenshots)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -27,7 +27,7 @@ Users should be able to:
 - Clear all completed todos
 - Toggle light and dark mode
 
-### Screenshot
+### Screenshots
 
 ![mobile](./src/assets/screenshots/mobile.jpeg)
 ![desktop](./src/assets/screenshots/desktop.jpeg)

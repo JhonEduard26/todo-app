@@ -12,12 +12,39 @@ import { v4 as uuidv4 } from 'uuid'
 
 function App() {
   const [todos, saveTodos] = useLocalStorage()
+  const [state, setState] = useState({
+    active: false,
+    completed: false,
+    darkTheme: false,
+  })
 
-  const activeTodos = [...todos].filter((todo) => !todo.completed)
-  const completedTodos = [...todos].filter((todo) => todo.completed)
-
-  const [active, setActive] = useState(false)
-  const [completed, setCompleted] = useState(false)
+  const onAllFilter = () => {
+    setState({
+      ...state,
+      active: false,
+      completed: false,
+    })
+  }
+  const onActiveFilter = () => {
+    setState({
+      ...state,
+      active: true,
+      completed: false,
+    })
+  }
+  const onCompletedFilter = () => {
+    setState({
+      ...state,
+      active: false,
+      completed: true,
+    })
+  }
+  const onToggleTheme = () => {
+    setState({
+      ...state,
+      darkTheme: !state.darkTheme,
+    })
+  }
 
   const onCreate = (text) => {
     if (!text.trim()) {
@@ -32,118 +59,87 @@ function App() {
       saveTodos(newTodos)
     }
   }
-
   const onDelete = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id)
     saveTodos(newTodos)
   }
-
   const onComplete = (id) => {
     const index = todos.findIndex((todo) => todo.id === id)
     const newTodos = [...todos]
     newTodos[index].completed = !newTodos[index].completed
     saveTodos(newTodos)
   }
-
-  const onAllFilter = () => {
-    setActive(false)
-    setCompleted(false)
-  }
-
-  const onActiveFilter = () => {
-    setActive(true)
-    setCompleted(false)
-  }
-
-  const onCompletedFilter = () => {
-    setActive(false)
-    setCompleted(true)
-  }
-
   const onClearCompleted = () => {
     const newTodos = todos.filter((todo) => !todo.completed)
     saveTodos(newTodos)
   }
 
-  if (active && !completed) {
-    return (
-      <div className='App'>
-        <Header />
-        <CreateTodo createTodoFun={onCreate} />
-        <TodoList>
-          {activeTodos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              text={todo.text}
-              completed={todo.completed}
-              completeFun={onComplete}
-              deleteFun={onDelete}
-            />
-          ))}
-          <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
-          <TodoFilter
-            activeFun={onActiveFilter}
-            completedFun={onCompletedFilter}
-            allFun={onAllFilter}
-            active
-          />
-        </TodoList>
-      </div>
-    )
-  } else if (completed && !active) {
-    return (
-      <div className='App'>
-        <Header />
-        <CreateTodo createTodoFun={onCreate} />
-        <TodoList>
-          {completedTodos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              text={todo.text}
-              completed={todo.completed}
-              completeFun={onComplete}
-              deleteFun={onDelete}
-            />
-          ))}
-          <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
-          <TodoFilter
-            activeFun={onActiveFilter}
-            completedFun={onCompletedFilter}
-            allFun={onAllFilter}
-            complete
-          />
-        </TodoList>
-      </div>
-    )
-  } else {
-    return (
-      <div className='App'>
-        <Header />
-        <CreateTodo createTodoFun={onCreate} />
-        <TodoList>
-          {todos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              text={todo.text}
-              completed={todo.completed}
-              completeFun={onComplete}
-              deleteFun={onDelete}
-            />
-          ))}
-          <TodoCounter items={activeTodos.length} clearCompletedFun={onClearCompleted} />
-          <TodoFilter
-            activeFun={onActiveFilter}
-            completedFun={onCompletedFilter}
-            allFun={onAllFilter}
-            all
-          />
-        </TodoList>
-      </div>
-    )
-  }
-}
+  const todosPending = todos.filter((todo) => !todo.completed).length
 
+  return (
+    <div className={`App ${state.darkTheme && 'App-dark'}`}>
+      <Header toggleTheme={onToggleTheme} theme={state.darkTheme} />
+      <CreateTodo createTodoFun={onCreate} theme={state.darkTheme} />
+      <TodoList>
+        {(state.active &&
+          !state.completed &&
+          todos
+            .filter((todo) => !todo.completed)
+            .map((todo) => (
+              <TodoItem
+                key={todo.id}
+                id={todo.id}
+                text={todo.text}
+                completed={todo.completed}
+                completeFun={onComplete}
+                deleteFun={onDelete}
+                theme={state.darkTheme}
+              />
+            ))) ||
+          (state.completed &&
+            !state.active &&
+            todos
+              .filter((todo) => todo.completed)
+              .map((todo) => (
+                <TodoItem
+                  key={todo.id}
+                  id={todo.id}
+                  text={todo.text}
+                  completed={todo.completed}
+                  completeFun={onComplete}
+                  deleteFun={onDelete}
+                  theme={state.darkTheme}
+                />
+              ))) ||
+          (!state.completed &&
+            !state.active &&
+            todos.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                id={todo.id}
+                text={todo.text}
+                completed={todo.completed}
+                completeFun={onComplete}
+                deleteFun={onDelete}
+                theme={state.darkTheme}
+              />
+            )))}
+        <TodoCounter
+          items={todosPending}
+          clearCompletedFun={onClearCompleted}
+          theme={state.darkTheme}
+        />
+        <TodoFilter
+          activeFun={onActiveFilter}
+          completedFun={onCompletedFilter}
+          allFun={onAllFilter}
+          all={!state.active && !state.completed}
+          active={state.active}
+          complete={state.completed}
+          theme={state.darkTheme}
+        />
+      </TodoList>
+    </div>
+  )
+}
 export default App

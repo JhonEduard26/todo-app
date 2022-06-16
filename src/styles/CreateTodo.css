@@ -8,6 +8,9 @@
   border-radius: 4px;
   background-color: var(--very-darker-grayish-blue);
 }
+.CreateTodo-container--dark {
+  background-color: var(--very-light-gray);
+}
 .CreateTodo-check {
   cursor: pointer;
   width: 18px;
@@ -24,4 +27,8 @@
 }
 .CreateTodo-input::placeholder {
   color: var(--dark-grayish-blue);
+}
+.CreateTodo-input--dark {
+  color: var(--very-darker-grayish-blue);
+  background-color: var(--very-light-gray);
 }

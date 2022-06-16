@@ -6,17 +6,17 @@
   padding: 4px 12px;
   min-height: 52px;
   border-bottom: 1px solid var(--very-dark-grayish-blue);
-  background: var(--very-darker-grayish-blue);
+  background-color: var(--very-darker-grayish-blue);
   color: var(--light-grayish-blue);
+}
+.TodoItem-container--dark {
+  border-bottom: 1px solid var(--light-grayish-blue);
+  background-color: var(--very-light-gray);
+  color: var(--very-dark-grayish-blue);
 }
 .TodoItem:first-child .TodoItem-container {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-}
-.TodoItem:last-child .TodoItem-container {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border: 0;
 }
 .TodoItem-check {
   cursor: pointer;
