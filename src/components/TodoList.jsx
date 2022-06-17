@@ -1,7 +1,8 @@
 const styleForDesktop = {
   position: 'relative',
+  maxWidth: '460px',
+  margin: '0 auto',
   marginBottom: '16px',
-  boxShadow: '0 8px 16px -2px rgba(0, 0, 0, 0.5)',
   borderBottomLeftRadius: '4px',
   borderBottomRightRadius: '4px',
 }

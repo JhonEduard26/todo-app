@@ -1,11 +1,12 @@
 .App {
   transition: 0.3s;
   width: 100%;
-  max-width: 375px;
+  min-width: 300px;
   min-height: 100vh;
-  margin: 0 auto;
-  padding: 24px 12px 0 12px;
+  padding: 40px 16px 0 16px;
   background-image: url(./assets/images/bg-mobile-dark.jpg);
+  background-position-x: center;
+  background-size: contain;
   background-repeat: no-repeat;
   background-color: var(--very-dark-blue);
 }
@@ -15,9 +16,10 @@
 }
 @media screen and (min-width: 768px) {
   .App {
-    max-width: 500px;
     padding-top: 64px;
-    background-image: none;
-    background-color: transparent;
+    background-image: url(./assets/images/bg-desktop-dark.jpg);
+  }
+  .App-dark {
+    background-image: url(./assets/images/bg-desktop-light.jpg);
   }
 }
