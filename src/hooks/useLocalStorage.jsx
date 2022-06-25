@@ -11,7 +11,7 @@ function useLocalStorage() {
 
     if (!localStorageItem) {
       localStorage.setItem(ITEM_NAME, JSON.stringify([]))
-      parsedItem = initialValue
+      parsedItem = []
     } else {
       parsedItem = JSON.parse(localStorageItem)
     }
